@@ -7,8 +7,15 @@
 ## 資料集資訊
 
 ### 資料集來源
-本專案使用的資料集來自兩個公開的 Roboflow 資料集：
+本專案使用的資料集來自兩個公開的 Roboflow 資料集，並已整理為統一的格式：
 
+**已整理資料集（推薦使用）**
+- **Google Drive 下載**：[📁 排球動作識別資料集](https://drive.google.com/drive/folders/1lvWUwkBAEeCGJoM7Z5gwE71ngi94xQB5?usp=share_link)
+- 包含完整的 train/valid/test 分割
+- 已合併並統一標籤格式
+- 包含 data.yaml 配置檔案
+
+**原始資料集來源**
 1. **Volleyball Actions Dataset**
    - 來源：https://universe.roboflow.com/actions-players/volleyball-actions/dataset/5
    - 工作空間：actions-players
@@ -173,7 +180,15 @@ vb_action_yolov11/
    ```
 
 5. **下載資料集**
-   - 由於資料集檔案過大，請從以下連結下載：
+
+   **方法一：使用已整理好的資料集（推薦）**
+   - 從 Google Drive 下載已整理好的完整資料集：
+   - [📁 排球動作識別資料集 - Google Drive](https://drive.google.com/drive/folders/1lvWUwkBAEeCGJoM7Z5gwE71ngi94xQB5?usp=share_link)
+   - 下載後解壓縮並放置在 `Volleyball_Action_Dataset/` 目錄中
+   - 資料集已包含完整的 train/valid/test 分割和 data.yaml 配置檔案
+
+   **方法二：從原始來源下載**
+   - 由於資料集檔案過大，也可以從以下原始連結下載：
    - [Volleyball Actions Dataset](https://universe.roboflow.com/actions-players/volleyball-actions/dataset/5)
    - [Volleyball Action Recognition Dataset](https://universe.roboflow.com/vbanalyzer/volleyball-action-recognition-k6tqv/dataset/6)
    - 將下載的資料集合併並放置在 `Volleyball_Action_Dataset/` 目錄中
@@ -292,6 +307,9 @@ A: 將檢查點檔案放在 `runs/volleyball_200epoch/weights/` 目錄中，腳�
 
 ### Q: 記憶體不足怎麼辦？
 A: 可以降低批次大小 (`batch`) 或關閉圖片緩存 (`cache: False`)。
+
+### Q: 如何下載資料集？
+A: 推薦從 [Google Drive](https://drive.google.com/drive/folders/1lvWUwkBAEeCGJoM7Z5gwE71ngi94xQB5?usp=share_link) 下載已整理好的資料集，包含完整的 train/valid/test 分割和配置檔案。
 
 ## 聯絡資訊
 
