@@ -13,6 +13,16 @@ def main():
     # 設定資料集路徑
     data_yaml_path = "Volleyball_Action_Dataset/data.yaml"
     
+    # 設備配置說明
+    print("=== 設備配置說明 ===")
+    print("當前設定為 Mac M1 Pro 優化")
+    print("如需使用 RTX 5070，請修改以下參數：")
+    print("  - device: 'mps' → 'cuda'")
+    print("  - batch: 12 → 16-20")
+    print("  - workers: 4 → 8-12")
+    print("  - half: False → True")
+    print("==================")
+    
     # 檢查資料集配置檔案是否存在
     if not os.path.exists(data_yaml_path):
         print(f"錯誤：找不到資料集配置檔案 {data_yaml_path}")
@@ -45,14 +55,14 @@ def main():
         'data': data_yaml_path,
         'epochs': 200,  # 訓練輪數 (200個epochs)
         'imgsz': 640,   # 輸入圖像大小
-        'batch': 12,    # 批次大小 (M1 Pro優化)
-        'device': 'mps',  # 使用 M1 GPU 訓練 (Metal Performance Shaders)
+        'batch': 12,    # 批次大小 (M1 Pro 優化) | RTX 5070: 建議 16-20
+        'device': 'mps',  # 使用 M1 Pro GPU 訓練 (Metal Performance Shaders) | RTX 5070: 改為 'cuda'
         'project': 'runs',  # 專案目錄
         'name': 'volleyball_200epoch',  # 實驗名稱
         'save': True,   # 儲存檢查點
         'save_period': 20,  # 每20個epoch儲存一次
         'cache': False,  # 關閉圖片緩存 (避免記憶體不足)
-        'workers': 4,   # 資料載入器工作進程數 (M1 Pro優化)
+        'workers': 4,   # 資料載入器工作進程數 (M1 Pro 優化) | RTX 5070: 建議 8-12
         'patience': 50,  # 早停耐心值 (增加耐心值)
         'lr0': 0.001,   # 初始學習率 (降低學習率)
         'lrf': 0.1,     # 最終學習率
@@ -77,8 +87,8 @@ def main():
         'save_json': True,  # 保存JSON格式結果
         'save_txt': True,   # 保存檢測結果文本
         'save_conf': True,  # 保存置信度分數
-        'amp': True,    # 自動混合精度 (M1 Pro優化)
-        'half': False,  # 不使用半精度 (M1 Pro不支援)
+        'amp': True,    # 自動混合精度 (M1 Pro 優化) | RTX 5070: 建議啟用
+        'half': False,  # 不使用半精度 (M1 Pro 不支援) | RTX 5070: 建議設為 True
         'dnn': False,   # 不使用OpenCV DNN
         'deterministic': True,  # 確定性訓練
     }
